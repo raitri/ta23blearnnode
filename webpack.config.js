@@ -1,18 +1,33 @@
-import path from 'path';
-import HtmlWebpackPlugin from 'html-webpack-plugin';
+import path from "path";
+import HtmlWebpackPlugin from "html-webpack-plugin";
 
 const __filename = import.meta.filename;
 const __dirname = import.meta.dirname;
 
 export default {
-    entry: './src/index.js',
-    output: {
-        filename: 'main.js',
-        path: path.resolve(__dirname, 'dist')
+  entry: "./src/index.js",
+  output: {
+    filename: "main.js",
+    path: path.resolve(__dirname, "dist"),
+  },
+  devServer: {
+    static: {
+      directory: path.join(__dirname, "public"),
     },
-    plugins: [
-        new HtmlWebpackPlugin({
-            template: './src/index.html'
-        }),
+    compress: true,
+    port: 9000,
+  },
+  module: {
+    rules: [
+      {
+        test: /\.css$/i,
+        use: ["style-loader", "css-loader"],
+      },
     ],
-}
+  },
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: "./src/index.html",
+    }),
+  ],
+};
