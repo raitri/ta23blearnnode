@@ -1,5 +1,11 @@
 <script setup>
-let message = 'Hello Vue!'
+import { ref } from 'vue';
+
+let message = ref('Hello Vue!');
+setTimeout(() => {
+    message.value = 'Hello TA23b!';
+    console.log('message changed');
+}, 10_000);
 </script>
 <template>
     <div class="container">
@@ -9,5 +15,4 @@ let message = 'Hello Vue!'
     </div>
 </template>
 <style>
-
 </style>
